@@ -9,9 +9,9 @@ dotenv.config()
 const app = express()
 const httpServer = createServer(app)
 
-const port = process.env.SERVER_PORT
-const host = process.env.SERVER_HOST
-const corsOriginDirectory = process.env.CORS_ORIGIN
+const port = process.env.SERVER_PORT || 80
+const host = process.env.SERVER_HOST || 'localhost'
+const corsOriginDirectory = process.env.CORS_ORIGIN || 'https://gameshooterts.netlify.app/'
 
 httpServer.listen(Number(port), host, ()=> {
     console.log(`Server is Running on URL:`)
