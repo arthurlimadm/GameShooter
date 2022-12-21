@@ -9,17 +9,16 @@ export  const Game = ()=>{
     const [ link, setLink] = useState<null | string>(null)
     const [isConnected, setIsConnected] = useState<boolean>(false)
     const [gyroscope, setGyroscope] = useState<IGyroscope>({
-        alpha: 200,
-        beta: 200,
+        alpha: 0,
+        beta: 0,
         gamma: 0
     })
 
     SocketIO.socket.connect()
 
-
     useEffect(():any=> {
         SocketIO.socket.on('getLink', (id:string)=> {
-            setLink(`http://localhost:3000/${id}`)
+            setLink(`https://gameshooterts.netlify.app/${id}`)
         })
 
         return ()=> SocketIO.socket.off('getLink') 
@@ -50,19 +49,59 @@ export  const Game = ()=>{
         if(!context){
           return;
         }
+        const dpr = window.devicePixelRatio;
+        const rect = canvas.getBoundingClientRect();
 
-        context.fillStyle = 'white'
-        context.clearRect(0 , 0 , canvas.width, canvas.height)
-        
+        // Set the "actual" size of the canvas
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+
+        // Scale the context to ensure correct drawing operations
+        context.scale(dpr, dpr);
+
+        // Set the "drawn" size of the canvas
+        canvas.style.width = `${rect.width}px`;
+        canvas.style.height = `${rect.height}px`;
+
         const image = document.createElement('img')
-        image.src = 'https://www.svgrepo.com/show/125526/weapon-crosshair.svg'
+        image.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRTjW7fEhnJdCb0YhIHyeeAXwX1qSCL-bCkQ&usqp=CAU'
+
+        
+        /*context.fillStyle = 'white'
+        context.clearRect(0, 0, canvas.width, canvas.height)
+
+        const wizard = document.createElement('img')
+        wizard.src="https://art.pixilart.com/150e4789dc619cf.png"
+
+        context.drawImage(wizard, 10, 10, 256, 256)*/
+
+        let birdPosition = 1;
+
+        const bird = document.createElement('img')
+        bird.src="https://blog.valkrysa.com/content/images/2017/11/bird-flap-animation.gif"
+        let birdHegight = Math.random() * canvas.height
+
+        setInterval(()=>{
+            birdHegight = Math.random() * canvas.height
+        }, 2000)
+
+        setInterval(()=>{
+
+            context.fillStyle = 'white'
+            context.clearRect(0, 0, canvas.width, canvas.height)
+            birdPosition += 10
+            context.drawImage(bird, birdPosition, birdHegight, 50, 50)
+
+        }, 50)
+
+
+        
+        
 
         if(gyroscope.alpha > 300){
-            context.fillStyle = 'black'
-            context.drawImage(image, canvas.width - (gyroscope.alpha - 311) * 2.5, -2.5 * gyroscope.beta + canvas.height/2, 10, 10)
+            context.drawImage(image, canvas.width - (gyroscope.alpha - 311) * 2.5, -2.5 * gyroscope.beta + canvas.height/2, 50, 50)
         }else{
-            context.fillStyle = 'black'
-            context.drawImage(image,-3* gyroscope.alpha + canvas.width/2, -2.5 * gyroscope.beta + canvas.height/2, 10, 10)
+            context.drawImage(image,-3* gyroscope.alpha + canvas.width/2, -2.5 * gyroscope.beta + canvas.height/2, 50, 50)
         }
 
     }, [gyroscope])
