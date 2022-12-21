@@ -1,0 +1,26 @@
+{
+  "name": "s",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/index.ts",
+    "test": "vitest --config ./vite.config.ts"
+  },
+  "dependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.15",
+    "@types/express-session": "^1.17.5",
+    "@types/socket.io": "^3.0.2",
+    "@types/supertest": "^2.0.12",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20",
+    "socket.io": "^4.5.4",
+    "sucrase": "^3.29.0",
+    "supertest": "^6.3.3",
+    "typescript": "^4.9.3",
+    "vitest": "^0.25.2"
+  }
+}
