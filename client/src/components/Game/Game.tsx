@@ -1,6 +1,6 @@
 import {useRef, useEffect, useState} from 'react'
 import SocketIO from '../../config/socketio.config'
-import {AiOutlineLoading, AiOutlineReload} from 'react-icons/ai'
+import {AiOutlineLoading} from 'react-icons/ai'
 import {GiPistolGun} from 'react-icons/gi'
 import { IGyroscope } from '../../types/gyroscope'
 import { AlphaToX, BetaToY } from '../../helpers/GetAlphaandBetaValues'
