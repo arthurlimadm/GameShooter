@@ -49,59 +49,25 @@ export  const Game = ()=>{
         if(!context){
           return;
         }
+
         const dpr = window.devicePixelRatio;
         const rect = canvas.getBoundingClientRect();
-
-        // Set the "actual" size of the canvas
         canvas.width = rect.width * dpr;
         canvas.height = rect.height * dpr;
-
-        // Scale the context to ensure correct drawing operations
         context.scale(dpr, dpr);
-
-        // Set the "drawn" size of the canvas
         canvas.style.width = `${rect.width}px`;
         canvas.style.height = `${rect.height}px`;
 
         const image = document.createElement('img')
         image.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRTjW7fEhnJdCb0YhIHyeeAXwX1qSCL-bCkQ&usqp=CAU'
 
-        
-        /*context.fillStyle = 'white'
-        context.clearRect(0, 0, canvas.width, canvas.height)
+        context.fillStyle = 'white'
+        context.clearRect(0,0,canvas.width, canvas.height)
 
-        const wizard = document.createElement('img')
-        wizard.src="https://art.pixilart.com/150e4789dc619cf.png"
-
-        context.drawImage(wizard, 10, 10, 256, 256)*/
-
-        let birdPosition = 1;
-
-        const bird = document.createElement('img')
-        bird.src="https://blog.valkrysa.com/content/images/2017/11/bird-flap-animation.gif"
-        let birdHegight = Math.random() * canvas.height
-
-        setInterval(()=>{
-            birdHegight = Math.random() * canvas.height
-        }, 2000)
-
-        setInterval(()=>{
-
-            context.fillStyle = 'white'
-            context.clearRect(0, 0, canvas.width, canvas.height)
-            birdPosition += 10
-            context.drawImage(bird, birdPosition, birdHegight, 50, 50)
-
-        }, 50)
-
-
-        
-        
-
-        if(gyroscope.alpha > 300){
-            context.drawImage(image, canvas.width - (gyroscope.alpha - 311) * 2.5, -2.5 * gyroscope.beta + canvas.height/2, 50, 50)
+        if(gyroscope.alpha > 150){
+            context.drawImage(image, canvas.width - (gyroscope.alpha - 310) * 7, -9 * gyroscope.beta + canvas.height/2, 50, 50)
         }else{
-            context.drawImage(image,-3* gyroscope.alpha + canvas.width/2, -2.5 * gyroscope.beta + canvas.height/2, 50, 50)
+            context.drawImage(image,-8* gyroscope.alpha + canvas.width/2, -9 * gyroscope.beta + canvas.height/2, 50, 50)
         }
 
     }, [gyroscope])
