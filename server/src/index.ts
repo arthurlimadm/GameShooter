@@ -11,7 +11,6 @@ const httpServer = createServer(app)
 
 const port = process.env.SERVER_PORT || 80
 const host = process.env.SERVER_HOST || 'localhost'
-const corsOriginDirectory = process.env.CORS_ORIGIN || 'https://gameshooterts.netlify.app/'
 
 httpServer.listen(Number(port), host, ()=> {
     console.log(`Server is Running on URL:`)
@@ -20,7 +19,7 @@ httpServer.listen(Number(port), host, ()=> {
 
 const io = new Server(httpServer, {
     cors: {
-        origin: corsOriginDirectory,
+        origin: "*",
         methods: ['GET', 'POST'],
         credentials: true
     }
