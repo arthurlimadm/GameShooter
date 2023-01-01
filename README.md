@@ -11,7 +11,7 @@ When You enter the website, it's generated a unique Link with an ID to you, open
 
 The Smartphone Gyroscope functions based on three axis:
 
-[Gyroscope Axis]('https://miro.medium.com/max/862/1*gkiruUauYUO6mnGeoGEgMQ.jpeg')
+![https://miro.medium.com/max/862/1*gkiruUauYUO6mnGeoGEgMQ.jpeg](https://miro.medium.com/max/862/1*gkiruUauYUO6mnGeoGEgMQ.jpeg)
 
 - Alpha
 - Beta
