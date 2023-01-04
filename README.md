@@ -1,4 +1,4 @@
-# GameShooterTS
+# GameShooter
 
 ### Introduction
 
